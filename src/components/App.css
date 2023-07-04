@@ -1,0 +1,16 @@
+.wrapper {
+  width: 1280px;
+  margin: 0 auto;
+}
+
+.requestButtons {
+  display: flex;
+  column-gap: 10px;
+}
+
+.highlightPurple {
+  color: #646cff;
+}
+.highlightOrange {
+  color: orange;
+}
