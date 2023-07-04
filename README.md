@@ -1,10 +1,12 @@
 # 프론트엔드에서 API 요청을 관리하는 방법
 
+![프로젝트 화면](public/home-screen.png)
+
 ## Contents
 
-0. <a href='#preview'>Preview</a>
+1. <a href='#preview'>Preview</a>
 
-1. <a href="#1-axios-소개">Axios 소개</a>
+2. <a href="#1-axios-소개">Axios 소개</a>
 
    1. <a href="#11-간단한-기능">간단한 기능</a>
    2. <a href="#12-유용한-기능">유용한 기능</a>
@@ -13,7 +15,7 @@
       2. <a href="#122-전역으로-기본값-정의">전역으로 기본값 정의</a>
       3. <a href="#123-인터셉터">인터셉터</a>
 
-2. <a href="#2-프론트에서-api요청-관리하기">프론트에서 API요청 관리하기</a>
+3. <a href="#2-프론트에서-api요청-관리하기">프론트에서 API요청 관리하기</a>
 
 ## Settings
 
