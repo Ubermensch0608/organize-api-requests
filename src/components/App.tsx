@@ -1,30 +1,41 @@
 import { useState } from "react";
 
-import JsonPlaceHolderBaseApi from "../apis/jsonPlaceHolder/JsonPlaceHolderBaseApi";
+import Form from "./Form";
+import {
+  fetchPlaceholderAlbums,
+  fetchPlaceholderComments,
+  fetchPlaceholderPosts,
+  fetchPlaceholderTodos,
+  fetchPlaceholderUsers,
+} from "../apis/jsonPlaceHolder/fetches";
 import "./App.css";
 
 const App = () => {
-  const [placeholders, setPlaceholders] = useState([]);
+  const [placeholders, setPlaceholders] = useState<any[]>([]);
 
   const fetchPosts = async () => {
-    const { data } = await JsonPlaceHolderBaseApi("/posts");
-    setPlaceholders(data);
+    const posts = await fetchPlaceholderPosts();
+    setPlaceholders(posts);
   };
   const fetchComments = async () => {
-    const { data } = await JsonPlaceHolderBaseApi("/comments");
-    setPlaceholders(data);
+    const comments = await fetchPlaceholderComments();
+    setPlaceholders(comments);
   };
   const fetchAlbums = async () => {
-    const { data } = await JsonPlaceHolderBaseApi("/albums");
-    setPlaceholders(data);
+    const albums = await fetchPlaceholderAlbums();
+    setPlaceholders(albums);
   };
   const fetchTodos = async () => {
-    const { data } = await JsonPlaceHolderBaseApi("/todos");
-    setPlaceholders(data);
+    const todos = await fetchPlaceholderTodos();
+    setPlaceholders(todos);
   };
   const fetchUsers = async () => {
-    const { data } = await JsonPlaceHolderBaseApi("/users");
-    setPlaceholders(data);
+    const users = await fetchPlaceholderUsers();
+    setPlaceholders(users);
+  };
+
+  const updatePlaceholder = (fetchedPlaceholdersFromForm: any[]) => {
+    setPlaceholders(fetchedPlaceholdersFromForm);
   };
 
   return (
@@ -57,6 +68,7 @@ const App = () => {
             </button>
           </div>
         </div>
+        <Form onUpdatePlaceholders={updatePlaceholder} />
         <ul>
           <h3>Fetched Data</h3>
           {placeholders.map((placeholder) => (
