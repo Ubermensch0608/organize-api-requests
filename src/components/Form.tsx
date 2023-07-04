@@ -1,5 +1,7 @@
 import { createNewPost, modifyPostById } from "../apis/jsonPlaceHolder/fetches";
 
+import "./App.css";
+
 interface Props {
   onUpdatePlaceholders: (placeholders: any[]) => void;
 }
@@ -24,9 +26,9 @@ const Form = ({ onUpdatePlaceholders }: Props) => {
   };
 
   return (
-    <form onSubmit={submitSomeRequest}>
+    <form className="actions form" onSubmit={submitSomeRequest}>
       <label>
-        <input />
+        <input placeholder="This is Dummy Input" />
       </label>
       <button type="submit">Submit</button>
     </form>

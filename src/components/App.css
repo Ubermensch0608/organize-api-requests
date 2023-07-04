@@ -6,6 +6,7 @@
 .requestButtons {
   display: flex;
   column-gap: 10px;
+  margin-bottom: 20px;
 }
 
 .highlightPurple {
@@ -13,4 +14,17 @@
 }
 .highlightOrange {
   color: orange;
+}
+
+.form {
+  display: flex;
+  gap: 20px;
+}
+
+.eventTypeHeading {
+  padding-left: 1em;
+}
+
+.actions {
+  padding-left: 1em;
 }

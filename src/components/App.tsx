@@ -50,25 +50,32 @@ const App = () => {
         </header>
         <div>
           <h3>Requests</h3>
-          <div className="requestButtons">
-            <button type="button" onClick={fetchPosts}>
-              fetch posts
-            </button>
-            <button type="button" onClick={fetchComments}>
-              fetch comments
-            </button>
-            <button type="button" onClick={fetchAlbums}>
-              fetch albums
-            </button>
-            <button type="button" onClick={fetchTodos}>
-              fetch todos
-            </button>
-            <button type="button" onClick={fetchUsers}>
-              fetch users
-            </button>
+
+          <div>
+            <h4 className="eventTypeHeading">onClick</h4>
+            <div className="actions requestButtons">
+              <button type="button" onClick={fetchPosts}>
+                fetch posts
+              </button>
+              <button type="button" onClick={fetchComments}>
+                fetch comments
+              </button>
+              <button type="button" onClick={fetchAlbums}>
+                fetch albums
+              </button>
+              <button type="button" onClick={fetchTodos}>
+                fetch todos
+              </button>
+              <button type="button" onClick={fetchUsers}>
+                fetch users
+              </button>
+            </div>
+          </div>
+          <div>
+            <h4 className="eventTypeHeading">onSubmit</h4>
+            <Form onUpdatePlaceholders={updatePlaceholder} />
           </div>
         </div>
-        <Form onUpdatePlaceholders={updatePlaceholder} />
         <ul>
           <h3>Fetched Data</h3>
           {placeholders.map((placeholder) => (
