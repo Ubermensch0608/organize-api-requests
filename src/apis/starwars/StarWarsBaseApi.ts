@@ -1,18 +1,9 @@
-import axios, { Axios, AxiosInstance } from "axios";
+import BaseApi from "../jsonPlaceHolder/BaseApi";
 
-class StarWarsBaseApi extends Axios {
-  private instance: AxiosInstance;
-
+class StarWarsBaseApi extends BaseApi {
   constructor() {
     super();
-    this.instance = axios.create({
-      baseURL: "https://swapi.dev/api",
-      withCredentials: true,
-    });
-  }
-
-  public getAxiosInstance() {
-    return this.instance;
+    this.setDefaultBaseUrl("https://swapi.dev/api");
   }
 }
 

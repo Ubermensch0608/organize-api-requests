@@ -1,19 +1,10 @@
-import axios, { Axios, AxiosInstance } from "axios";
+import BaseApi from "./BaseApi";
 
-class JsonPlaceHolderBaseApi extends Axios {
-  private instance: AxiosInstance;
-
+class JsonPlaceHolderBaseApi extends BaseApi {
   constructor() {
     super();
-    this.instance = axios.create({
-      baseURL: "https://jsonplaceholder.typicode.com",
-      withCredentials: true,
-    });
-  }
-
-  public getAxiosInstance() {
-    return this.instance;
+    this.setDefaultBaseUrl("https://jsonplaceholder.typicode.com");
   }
 }
 
-export default new JsonPlaceHolderBaseApi().getAxiosInstance();
+export default JsonPlaceHolderBaseApi;

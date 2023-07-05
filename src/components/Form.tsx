@@ -1,4 +1,4 @@
-import { createNewPost, modifyPostById } from "../apis/jsonPlaceHolder/fetches";
+import requestJsonPlaceHolder from "src/apis/jsonPlaceHolder/requestJsonPlaceHolder";
 
 import "./App.css";
 import { RequestsProps } from "./requests";
@@ -7,12 +7,12 @@ const Form = ({ onUpdateData }: RequestsProps) => {
   const submitSomeRequest = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const res = await createNewPost({
+    const res = await requestJsonPlaceHolder.create.newPost({
       title: "hihi",
       body: "body",
       userId: 1001,
     });
-    const res2 = await modifyPostById(1, {
+    const res2 = await requestJsonPlaceHolder.update.postById(1, {
       title: "change",
       body: "11",
       userId: 1001,

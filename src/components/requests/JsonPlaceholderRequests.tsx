@@ -1,32 +1,26 @@
-import {
-  fetchPlaceholderAlbums,
-  fetchPlaceholderComments,
-  fetchPlaceholderPosts,
-  fetchPlaceholderTodos,
-  fetchPlaceholderUsers,
-} from "src/apis/jsonPlaceHolder/fetches";
+import JsonPlaceHolderResource from "src/apis/jsonPlaceHolder/requestJsonPlaceHolder";
 import { RequestsProps } from ".";
 import Form from "../Form";
 
 const JsonPlaceholderRequests = ({ onUpdateData }: RequestsProps) => {
   const fetchPosts = async () => {
-    const posts = await fetchPlaceholderPosts();
+    const posts = await JsonPlaceHolderResource.read.posts();
     onUpdateData(posts);
   };
   const fetchComments = async () => {
-    const comments = await fetchPlaceholderComments();
+    const comments = await JsonPlaceHolderResource.read.comments();
     onUpdateData(comments);
   };
   const fetchAlbums = async () => {
-    const albums = await fetchPlaceholderAlbums();
+    const albums = await JsonPlaceHolderResource.read.albums();
     onUpdateData(albums);
   };
   const fetchTodos = async () => {
-    const todos = await fetchPlaceholderTodos();
+    const todos = await JsonPlaceHolderResource.read.todos();
     onUpdateData(todos);
   };
   const fetchUsers = async () => {
-    const users = await fetchPlaceholderUsers();
+    const users = await JsonPlaceHolderResource.read.users();
     onUpdateData(users);
   };
 

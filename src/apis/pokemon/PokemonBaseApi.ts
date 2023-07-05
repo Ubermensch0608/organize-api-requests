@@ -1,18 +1,9 @@
-import axios, { Axios, AxiosInstance } from "axios";
+import BaseApi from "../jsonPlaceHolder/BaseApi";
 
-class PokemonBaseApi extends Axios {
-  private instance: AxiosInstance;
-
+class PokemonBaseApi extends BaseApi {
   constructor() {
     super();
-    this.instance = axios.create({
-      baseURL: "https://pokeapi.co/api/v2",
-      withCredentials: true,
-    });
-  }
-
-  public getAxiosInstance() {
-    return this.instance;
+    this.setDefaultBaseUrl("https://pokeapi.co/api/v2");
   }
 }
 
