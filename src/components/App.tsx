@@ -1,41 +1,22 @@
 import { useState } from "react";
 
 import Form from "./Form";
-import {
-  fetchPlaceholderAlbums,
-  fetchPlaceholderComments,
-  fetchPlaceholderPosts,
-  fetchPlaceholderTodos,
-  fetchPlaceholderUsers,
-} from "../apis/jsonPlaceHolder/fetches";
 import "./App.css";
+import ApiSwitch from "./apiSwitch/ApiSwitch";
+import type { ApiSwitchTitle } from "./apiSwitch/type";
+import Requests from "./requests/Requests";
 
 const App = () => {
   const [placeholders, setPlaceholders] = useState<any[]>([]);
-
-  const fetchPosts = async () => {
-    const posts = await fetchPlaceholderPosts();
-    setPlaceholders(posts);
-  };
-  const fetchComments = async () => {
-    const comments = await fetchPlaceholderComments();
-    setPlaceholders(comments);
-  };
-  const fetchAlbums = async () => {
-    const albums = await fetchPlaceholderAlbums();
-    setPlaceholders(albums);
-  };
-  const fetchTodos = async () => {
-    const todos = await fetchPlaceholderTodos();
-    setPlaceholders(todos);
-  };
-  const fetchUsers = async () => {
-    const users = await fetchPlaceholderUsers();
-    setPlaceholders(users);
-  };
+  const [apiSwitch, setApiSwitch] = useState<ApiSwitchTitle>("Pokemon");
 
   const updatePlaceholder = (fetchedPlaceholdersFromForm: any[]) => {
     setPlaceholders(fetchedPlaceholdersFromForm);
+  };
+
+  const switchApiType = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedApiTitle = e.target.value as ApiSwitchTitle;
+    setApiSwitch(selectedApiTitle);
   };
 
   return (
@@ -50,29 +31,12 @@ const App = () => {
         </header>
         <div>
           <h3>Requests</h3>
+          <ApiSwitch apiTitle={apiSwitch} onSwitchApiTitle={switchApiType} />
+          <Requests apiTitle={apiSwitch} onUpdateData={updatePlaceholder} />
 
+          <div></div>
           <div>
-            <h4 className="eventTypeHeading">onClick</h4>
-            <div className="actions requestButtons">
-              <button type="button" onClick={fetchPosts}>
-                fetch posts
-              </button>
-              <button type="button" onClick={fetchComments}>
-                fetch comments
-              </button>
-              <button type="button" onClick={fetchAlbums}>
-                fetch albums
-              </button>
-              <button type="button" onClick={fetchTodos}>
-                fetch todos
-              </button>
-              <button type="button" onClick={fetchUsers}>
-                fetch users
-              </button>
-            </div>
-          </div>
-          <div>
-            <h4 className="eventTypeHeading">onSubmit</h4>
+            <h5 className="eventTypeHeading">onSubmit</h5>
             <Form onUpdatePlaceholders={updatePlaceholder} />
           </div>
         </div>
