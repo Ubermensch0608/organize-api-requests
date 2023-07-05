@@ -1,7 +1,7 @@
 import axios, { Axios, AxiosInstance } from "axios";
 
 class StarWarsBaseApi extends Axios {
-  public instance: AxiosInstance;
+  private instance: AxiosInstance;
 
   constructor() {
     super();
@@ -10,6 +10,10 @@ class StarWarsBaseApi extends Axios {
       withCredentials: true,
     });
   }
+
+  public getAxiosInstance() {
+    return this.instance;
+  }
 }
 
-export default new StarWarsBaseApi().instance;
+export default new StarWarsBaseApi().getAxiosInstance();

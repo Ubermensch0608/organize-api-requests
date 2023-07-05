@@ -1,12 +1,9 @@
 import { createNewPost, modifyPostById } from "../apis/jsonPlaceHolder/fetches";
 
 import "./App.css";
+import { RequestsProps } from "./requests";
 
-interface Props {
-  onUpdatePlaceholders: (placeholders: any[]) => void;
-}
-
-const Form = ({ onUpdatePlaceholders }: Props) => {
+const Form = ({ onUpdateData }: RequestsProps) => {
   const submitSomeRequest = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -23,6 +20,7 @@ const Form = ({ onUpdatePlaceholders }: Props) => {
 
     console.log(res);
     console.log(res2);
+    onUpdateData(res.data);
   };
 
   return (

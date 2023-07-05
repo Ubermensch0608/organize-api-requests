@@ -1,7 +1,7 @@
 import axios, { Axios, AxiosInstance } from "axios";
 
 class PokemonBaseApi extends Axios {
-  public instance: AxiosInstance;
+  private instance: AxiosInstance;
 
   constructor() {
     super();
@@ -10,6 +10,10 @@ class PokemonBaseApi extends Axios {
       withCredentials: true,
     });
   }
+
+  public getAxiosInstance() {
+    return this.instance;
+  }
 }
 
-export default PokemonBaseApi;
+export default new PokemonBaseApi().getAxiosInstance();

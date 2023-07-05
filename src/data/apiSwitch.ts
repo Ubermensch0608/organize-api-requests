@@ -1,14 +1,14 @@
 export const API_SWITCHES = [
   {
     id: 1,
-    title: "Pokemon",
+    title: "JSONPlaceholder",
   },
   {
     id: 2,
-    title: "StarWars",
+    title: "Pokemon",
   },
   {
     id: 3,
-    title: "JSONPlaceholder",
+    title: "StarWars",
   },
 ];

@@ -6,6 +6,7 @@ import {
   fetchPlaceholderUsers,
 } from "src/apis/jsonPlaceHolder/fetches";
 import { RequestsProps } from ".";
+import Form from "../Form";
 
 const JsonPlaceholderRequests = ({ onUpdateData }: RequestsProps) => {
   const fetchPosts = async () => {
@@ -30,27 +31,34 @@ const JsonPlaceholderRequests = ({ onUpdateData }: RequestsProps) => {
   };
 
   return (
-    <div>
-      <h4>JsonPlaceholder APIs</h4>
-      <h5 className="eventTypeHeading">onClick</h5>
-      <div className="actions requestButtons">
-        <button type="button" onClick={fetchPosts}>
-          fetch posts
-        </button>
-        <button type="button" onClick={fetchComments}>
-          fetch comments
-        </button>
-        <button type="button" onClick={fetchAlbums}>
-          fetch albums
-        </button>
-        <button type="button" onClick={fetchTodos}>
-          fetch todos
-        </button>
-        <button type="button" onClick={fetchUsers}>
-          fetch users
-        </button>
+    <article>
+      <div>
+        <h4>JsonPlaceholder APIs</h4>
+        <h5 className="eventTypeHeading">onClick</h5>
+        <div className="actions requestButtons">
+          <button type="button" onClick={fetchPosts}>
+            fetch posts
+          </button>
+          <button type="button" onClick={fetchComments}>
+            fetch comments
+          </button>
+          <button type="button" onClick={fetchAlbums}>
+            fetch albums
+          </button>
+          <button type="button" onClick={fetchTodos}>
+            fetch todos
+          </button>
+          <button type="button" onClick={fetchUsers}>
+            fetch users
+          </button>
+        </div>
       </div>
-    </div>
+
+      <div>
+        <h5 className="eventTypeHeading">onSubmit</h5>
+        <Form onUpdateData={(d) => console.log(d)} />
+      </div>
+    </article>
   );
 };
 export default JsonPlaceholderRequests;

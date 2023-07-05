@@ -1,7 +1,7 @@
 import axios, { Axios, AxiosInstance } from "axios";
 
 class JsonPlaceHolderBaseApi extends Axios {
-  public instance: AxiosInstance;
+  private instance: AxiosInstance;
 
   constructor() {
     super();
@@ -10,6 +10,10 @@ class JsonPlaceHolderBaseApi extends Axios {
       withCredentials: true,
     });
   }
+
+  public getAxiosInstance() {
+    return this.instance;
+  }
 }
 
-export default new JsonPlaceHolderBaseApi().instance;
+export default new JsonPlaceHolderBaseApi().getAxiosInstance();

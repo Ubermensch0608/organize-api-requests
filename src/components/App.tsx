@@ -1,6 +1,5 @@
 import { useState } from "react";
 
-import Form from "./Form";
 import "./App.css";
 import ApiSwitch from "./apiSwitch/ApiSwitch";
 import type { ApiSwitchTitle } from "./apiSwitch/type";
@@ -8,7 +7,7 @@ import Requests from "./requests/Requests";
 
 const App = () => {
   const [placeholders, setPlaceholders] = useState<any[]>([]);
-  const [apiSwitch, setApiSwitch] = useState<ApiSwitchTitle>("Pokemon");
+  const [apiSwitch, setApiSwitch] = useState<ApiSwitchTitle>("JSONPlaceholder");
 
   const updatePlaceholder = (fetchedPlaceholdersFromForm: any[]) => {
     setPlaceholders(fetchedPlaceholdersFromForm);
@@ -33,12 +32,6 @@ const App = () => {
           <h3>Requests</h3>
           <ApiSwitch apiTitle={apiSwitch} onSwitchApiTitle={switchApiType} />
           <Requests apiTitle={apiSwitch} onUpdateData={updatePlaceholder} />
-
-          <div></div>
-          <div>
-            <h5 className="eventTypeHeading">onSubmit</h5>
-            <Form onUpdatePlaceholders={updatePlaceholder} />
-          </div>
         </div>
         <ul>
           <h3>Fetched Data</h3>
