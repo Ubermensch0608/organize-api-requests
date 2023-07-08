@@ -1,4 +1,4 @@
-import BaseApi from "../jsonPlaceHolder/BaseApi";
+import BaseApi from "../BaseApi";
 
 class StarWarsBaseApi extends BaseApi {
   constructor() {
