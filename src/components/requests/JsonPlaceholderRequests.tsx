@@ -8,7 +8,11 @@ const JsonPlaceholderRequests = ({ onUpdateData }: RequestsProps) => {
     onUpdateData(posts);
   };
   const fetchComments = async () => {
-    const comments = await JsonPlaceHolderResource.read.comments();
+    const { data: comments, config } =
+      await JsonPlaceHolderResource.read.comments();
+
+    console.log(config);
+
     onUpdateData(comments);
   };
   const fetchAlbums = async () => {

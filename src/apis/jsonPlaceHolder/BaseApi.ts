@@ -7,6 +7,17 @@ abstract class BaseApi {
     this.instance = axios.create({
       withCredentials: true,
     });
+    this.instance.interceptors.request.use(
+      (configs) => {
+        configs.headers.Authorization = "USER_AUTH_TOKEN";
+        return configs;
+      },
+      (err) => err
+    );
+    this.instance.interceptors.response.use(
+      (response) => response,
+      (err) => {}
+    );
   }
 
   public getAxiosInstance() {

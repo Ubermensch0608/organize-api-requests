@@ -19,9 +19,7 @@ const JsonPlaceHolderResource = (() => {
     postCommentsById: async (id: number) => {
       return (await instance.get(`/posts/${id}/comments`)).data;
     },
-    comments: async () => {
-      return (await instance.get("/comments")).data;
-    },
+    comments: async () => await instance.get("/comments"),
     commentsByPostId: async (postId: number) => {
       return (await instance.get(`/comments?postId=${postId}`)).data;
     },

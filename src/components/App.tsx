@@ -33,6 +33,9 @@ const App = () => {
           <ApiSwitch apiTitle={apiSwitch} onSwitchApiTitle={switchApiType} />
           <Requests apiTitle={apiSwitch} onUpdateData={updatePlaceholder} />
         </div>
+        <div>
+          <h3>Request header</h3>
+        </div>
         <ul>
           <h3>Fetched Data</h3>
           {placeholders.map((placeholder) => (
