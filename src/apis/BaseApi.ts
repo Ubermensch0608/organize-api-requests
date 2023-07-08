@@ -16,7 +16,7 @@ abstract class BaseApi {
     );
     this.instance.interceptors.response.use(
       (response) => response,
-      (err) => {}
+      (err) => err
     );
   }
 

@@ -2,6 +2,19 @@
   width: 1280px;
   margin: 0 auto;
 }
+.header {
+  background-color: black;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  > nav {
+    width: 1280px;
+    margin: 0 auto;
+  }
+  .authBtn {
+    float: right;
+  }
+}
 
 .requestButtons {
   display: flex;

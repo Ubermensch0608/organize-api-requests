@@ -4,12 +4,11 @@ import "./App.css";
 import ApiSwitch from "./apiSwitch/ApiSwitch";
 import type { ApiSwitchTitle } from "./apiSwitch/type";
 import Requests from "./requests/Requests";
-import useUserAuth from "src/hooks/useUserAuth";
+import GNB from "src/layouts/GNB";
 
 const App = () => {
   const [placeholders, setPlaceholders] = useState<any[]>([]);
   const [apiSwitch, setApiSwitch] = useState<ApiSwitchTitle>("JSONPlaceholder");
-  const { isLoggedIn, onLogin, onLogout } = useUserAuth();
 
   const updatePlaceholder = (fetchedPlaceholdersFromForm: any[]) => {
     setPlaceholders(fetchedPlaceholdersFromForm);
@@ -22,20 +21,8 @@ const App = () => {
 
   return (
     <>
+      <GNB />
       <main className="wrapper">
-        <header>
-          <nav>
-            {isLoggedIn ? (
-              <button type="button" onClick={onLogout}>
-                로그아웃
-              </button>
-            ) : (
-              <button type="button" onClick={onLogin}>
-                로그인
-              </button>
-            )}
-          </nav>
-        </header>
         <article>
           <header>
             <h1>

@@ -1,12 +1,15 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
+
+import MswApi from "src/apis/MswApi";
 
 const useUserAuth = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const loginUser = async () => {
     try {
-      await axios.post("/login");
+      const res = await MswApi.post("/login");
+      console.log(res);
+
       setIsLoggedIn(true);
     } catch (error) {
       console.error(error);
@@ -14,7 +17,7 @@ const useUserAuth = () => {
   };
 
   const logoutUser = async () => {
-    await axios.post("/logout");
+    await MswApi.post("/logout");
     setIsLoggedIn(false);
   };
 
