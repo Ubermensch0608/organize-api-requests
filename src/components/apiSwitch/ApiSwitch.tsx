@@ -1,6 +1,4 @@
 import { API_SWITCHES } from "src/data/apiSwitch";
-
-import styles from "./ApiSwitch.module.scss";
 import { ApiSwitchTitle } from "./type";
 
 interface Props {

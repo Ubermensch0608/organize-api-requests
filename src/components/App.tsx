@@ -1,18 +1,17 @@
 import { useState } from "react";
+import { useAtomValue } from "jotai";
 
-import "./App.css";
+import GNB from "src/layouts/GNB";
+import { requestHeadersState } from "src/atom";
 import ApiSwitch from "./apiSwitch/ApiSwitch";
 import type { ApiSwitchTitle } from "./apiSwitch/type";
-import Requests from "./requests/Requests";
-import GNB from "src/layouts/GNB";
+import "./App.css";
+import Responses from "./response/Responses";
+import EventContainer from "./events/EventContainer";
+import { Headers } from "./requests/Headers";
 
 const App = () => {
-  const [placeholders, setPlaceholders] = useState<any[]>([]);
   const [apiSwitch, setApiSwitch] = useState<ApiSwitchTitle>("JSONPlaceholder");
-
-  const updatePlaceholder = (fetchedPlaceholdersFromForm: any[]) => {
-    setPlaceholders(fetchedPlaceholdersFromForm);
-  };
 
   const switchApiType = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedApiTitle = e.target.value as ApiSwitchTitle;
@@ -34,17 +33,10 @@ const App = () => {
           <div>
             <h3>Requests</h3>
             <ApiSwitch apiTitle={apiSwitch} onSwitchApiTitle={switchApiType} />
-            <Requests apiTitle={apiSwitch} onUpdateData={updatePlaceholder} />
+            <EventContainer />
           </div>
-          <div>
-            <h3>Request header</h3>
-          </div>
-          <ul>
-            <h3>Fetched Data</h3>
-            {placeholders.map((placeholder) => (
-              <li key={placeholder.id}>{JSON.stringify(placeholder)}</li>
-            ))}
-          </ul>
+          <Headers />
+          <Responses />
         </article>
       </main>
     </>

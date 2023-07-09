@@ -1,8 +1,4 @@
-interface RequestsProps {
-  onUpdateData: (fetchedPlaceholdersFromForm: any[]) => void;
-}
-
-const PokemonRequests = ({ onUpdateData }: RequestsProps) => {
+const PokemonRequests = () => {
   return (
     <div>
       <h4>Pokemon APIs</h4>

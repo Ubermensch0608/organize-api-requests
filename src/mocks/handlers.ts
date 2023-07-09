@@ -47,4 +47,21 @@ export const handlers = [
       ctx.status(200)
     );
   }),
+
+  rest.get(
+    "https://jsonplaceholder.typicode.com/users",
+    async (req, res, ctx) => {
+      for await (const header of req.headers) {
+        if (header[1].match(/accessToken/gi)) {
+          try {
+            return res(ctx.status(200));
+          } catch (error) {
+            console.error(error);
+          }
+        }
+      }
+
+      return res(ctx.status(401));
+    }
+  ),
 ];

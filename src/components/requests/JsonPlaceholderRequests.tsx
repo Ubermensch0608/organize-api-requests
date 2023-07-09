@@ -1,31 +1,51 @@
+import { useSetAtom } from "jotai";
+
 import JsonPlaceHolderResource from "src/apis/jsonPlaceHolder/requestJsonPlaceHolder";
-import { RequestsProps } from ".";
+import {
+  requestHeadersState,
+  responseBodyState,
+  responseConfigsAndHeadersState,
+} from "src/atom";
 import Form from "../Form";
 
-const JsonPlaceholderRequests = ({ onUpdateData }: RequestsProps) => {
+const JsonPlaceholderRequests = () => {
+  const setRequestHeaders = useSetAtom(requestHeadersState);
+  const setResponseBody = useSetAtom(responseBodyState);
+  const setResponseConfigsAndHeaders = useSetAtom(
+    responseConfigsAndHeadersState
+  );
+
+  const JsonPlaceHolder = JsonPlaceHolderResource;
+
+  JsonPlaceHolder.interceptors.request.use((configs) => {
+    setRequestHeaders(configs);
+    return configs;
+  });
+
+  JsonPlaceHolder.interceptors.response.use((response) => {
+    setResponseConfigsAndHeaders([response.headers, response.config]);
+    return response;
+  });
+
   const fetchPosts = async () => {
-    const posts = await JsonPlaceHolderResource.read.posts();
-    onUpdateData(posts);
+    const posts = await JsonPlaceHolder.read.posts();
+    setResponseBody(posts);
   };
   const fetchComments = async () => {
-    const { data: comments, config } =
-      await JsonPlaceHolderResource.read.comments();
-
-    console.log(config);
-
-    onUpdateData(comments);
+    const comments = await JsonPlaceHolder.read.comments();
+    setResponseBody(comments);
   };
   const fetchAlbums = async () => {
-    const albums = await JsonPlaceHolderResource.read.albums();
-    onUpdateData(albums);
+    const albums = await JsonPlaceHolder.read.albums();
+    setResponseBody(albums);
   };
   const fetchTodos = async () => {
-    const todos = await JsonPlaceHolderResource.read.todos();
-    onUpdateData(todos);
+    const todos = await JsonPlaceHolder.read.todos();
+    setResponseBody(todos);
   };
   const fetchUsers = async () => {
-    const users = await JsonPlaceHolderResource.read.users();
-    onUpdateData(users);
+    const users = await JsonPlaceHolder.read.users();
+    setResponseBody(users);
   };
 
   return (
@@ -47,7 +67,7 @@ const JsonPlaceholderRequests = ({ onUpdateData }: RequestsProps) => {
             fetch todos
           </button>
           <button type="button" onClick={fetchUsers}>
-            fetch users
+            fetch auth users
           </button>
         </div>
       </div>
