@@ -66,3 +66,24 @@ API에 변경이 생길 때 수고로운 수정을 해야 할 것이다.
       2. 확장
 2. 이벤트 관리하기
    1. 어떻게 하면 fetch 로직을 이벤트와 관계 없이 재사용하기 좋게 관리할 수 있을까?
+
+## 3. msw 사용
+
+1. 간단한 로그인 로직 구현
+
+   1. 로그인
+      로그인 버튼 클릭 시
+
+      - session storage에 로그인 true 저장
+      - random accessToken 발급하여 cookie에 담아 클라이언로 전송
+
+   2. 로그아웃
+      로그아웃 버튼 클릭 시
+
+      - session storage에 로그인 false 저장
+      - accessToken cookie 만료 클라이언로 전송
+
+   3. 인증/인가
+      인증 페이지 진입 or API호출
+      - axios interceptor로 accessToken 헤더에 담아 보내기 Authorization
+      - msw에서 요청 받을 때 헤더에 Authorization 없으면 401에러
