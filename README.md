@@ -111,7 +111,7 @@ axios는 클라이언트(브라우저)에서 XMLHttpRequests를 기반으로 간
 
 3. 가장 인기 많은 HTTP-client 라이브러리이다.
    npm 다운로드 동향을 파악할 수 있는 <a href="https://npmtrends.com/axios-vs-got-vs-request-vs-superagent">npm trends</a>에 의하면 axios는 브라우저 HTTP-client 라이브러리에서 단연 1위다.
-   <img src="snapshots/npm-trends__axios.png" alt="snapshots/npm-trends__axios">
+   ![인기 좋은 axios](snapshots/npm-trends__axios.png)
 
 더 자세한 사항은 <a href="https://axios-http.com/kr/docs/intro">Axios 공식문서</a>를 참조하길 바란다.
 
@@ -120,22 +120,21 @@ axios는 클라이언트(브라우저)에서 XMLHttpRequests를 기반으로 간
 ### 1. 다수의 domain API 관리하기
 
 프로젝트가 커지면서 사용하는 API는 늘어난다. 아래 코드와 같이 동일한 서버 도메인이 반복되는 것이 보인다. 코드가 3번 이상 반복되니 재사용 가능하게 바꿔보자.
-<img src="snapshots/before-instance.png" alt="before-instance"/>
+![인스턴스 적용 전](snapshots/before-instance.png)
 
-1. 반복 줄이기
+1. 인스턴스 생성
+   ![인스턴스 생성](snapshots/after-instance__1.png)
 
-   1. 인스턴스 생성
-      <img src="snapshots/after-instance__1.png" alt="인스턴스 생성"/>
-   2. 인스턴스 사용
-      <img src="snapshots/after-instance__2.png" alt="인스턴스 사용"/>
+2. 인스턴스 사용
+   ![인스턴스 사용](snapshots/after-instance__2.png)
 
-   공통되는 API 서버 도메인을 인스턴스를 생성하여 관리한다. 더 이상 도메인에 대해 외부에서 관여할 일이 없다.
+공통되는 API 서버 도메인을 인스턴스를 생성하여 관리한다. 더 이상 도메인에 대해 외부에서 관여할 일이 없다.
 
 ### 2. 재사용 request 함수 만들기
 
 도메인을 빼내어 많은 반복이 줄었다. 그런데 기존 버튼 이벤트 외에 동일한 API요청을 보내는 요구사항이 들어왔다. 현재의 코드를 유지하면 추가로 사용하는 이벤트에서도 동일한 코드가 구현될 것이다.
 중요한 것은 적절한 API에 요청을 보내어 필요한 리소스를 전달 받는 것이다. 이 요청-응답 과정을 추상화하여 재사용 가능한 함수로 만들어보자
-<img src="snapshots/재사용가능한요청함수.png" alt="재사용가능한요청함수"/>
+![재사용 가능한 요청 함수](snapshots/재사용가능한요청함수.png)
 해당 API호출에 관해서는 더 이상 재정의가 필요없고, 필요한 파라미터만 전달하면 된다.
 
 ### 3. 모듈화
@@ -145,7 +144,7 @@ axios는 클라이언트(브라우저)에서 XMLHttpRequests를 기반으로 간
 이것은 개인 및 팀원의 업무 생산성을 낮추는 원인 중 하나다.
 나는 이러한 문제를 해결하기 위해 하나의 모듈로 통합관리하는 것이 좋겠다고 판단하였다. 모듈에 우선적으로 접근해야하기때문에 어떠한 로직이 있는지 한 눈에 볼 수 있고, 모듈에서 통합관리가 가능하다. 어떤 API인지 헷갈린다.
 
-<img src="snapshots/request-module__1.png" alt="통신 모듈"/>
+![통신 모듈 통합](snapshots/request-module__1.png)
 
 즉시실행함수 패턴을 사용하여 간단한 캡슐화를 챙길 수 있었다. API를 사용하는 것에 있어 개발자는 더 이상 세부 정보를 알 필요가 없다. 원하는 API 서버 도메인과 어떤 데이터를 원하는지만 선택하면 된다. 이후는 최소한의 정보만 인자로 넘기면 된다.
 
