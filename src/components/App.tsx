@@ -1,8 +1,6 @@
 import { useState } from "react";
-import { useAtomValue } from "jotai";
 
 import GNB from "src/layouts/GNB";
-import { requestHeadersState } from "src/atom";
 import ApiSwitch from "./apiSwitch/ApiSwitch";
 import type { ApiSwitchTitle } from "./apiSwitch/type";
 import "./App.css";
